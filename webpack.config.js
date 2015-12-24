@@ -19,9 +19,17 @@ export default {
         include: SRC_DIR,
         loader: 'babel-loader'
       },
-      // Extract sass files (with sourcemaps)
+      // Extract css/scss
       {
-        test: /\.(css|sass|scss)$/,
+        test: /\.(css|scss)$/,
+        loader: ExtractTextPlugin.extract(
+          'css-loader?sourceMap' +
+          '!sass-loader?sourceMap'
+        )
+      },
+      // Extract sass files
+      {
+        test: /\.sass$/,
         loader: ExtractTextPlugin.extract(
           'css-loader?sourceMap' +
           '!sass-loader?sourceMap&indentedSyntax=true'
