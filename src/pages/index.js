@@ -7,7 +7,7 @@ class Home extends Component {
   render () {
     return (
       <DefaultLayout>
-        <div>Home</div>
+        <p>Home</p>
       </DefaultLayout>
     )
   }

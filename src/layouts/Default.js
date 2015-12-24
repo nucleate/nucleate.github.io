@@ -1,16 +1,16 @@
 import React from 'react'
 
-import logo from '../img/cyclejs_logo.svg'
+import logo from '../img/nucleate-logo.svg'
 
 export default function DefaultLayout ({ children }) {
   return (
     <div className='wide-page-body'>
       <nav className='side-menu'>
-        <a href='/' className='cycle-home-link'>
-          <img className='cycle-home-logo' src={logo} alt='Cycle.js logo'/>
+        <a href='/' className='nucleate-home-link'>
+          <img className='nucleate-home-logo' src={logo} alt='Nucleate logo'/>
         </a>
         <h3>
-          <a href='/' className='cycle-home-link'>Cycle.js</a>
+          <a href='/' className='nucleate-home-link'>Nucleate</a>
         </h3>
         {/*
         <ul>
