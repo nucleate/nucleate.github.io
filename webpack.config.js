@@ -21,10 +21,10 @@ export default {
       },
       // Extract sass files (with sourcemaps)
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css|sass|scss)$/,
         loader: ExtractTextPlugin.extract(
           'css-loader?sourceMap' +
-          '!sass-loader?sourceMap'
+          '!sass-loader?sourceMap&indentedSyntax=true'
         )
       }
     ]

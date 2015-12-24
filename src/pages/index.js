@@ -1,10 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { page } from 'nucleate'
 
+import DefaultLayout from '../layouts/Default'
+
 class Home extends Component {
   render () {
     return (
-      <div>Home</div>
+      <DefaultLayout>
+        <div>Home</div>
+      </DefaultLayout>
     )
   }
 }

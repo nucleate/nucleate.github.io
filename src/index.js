@@ -1,9 +1,7 @@
 import 'babel-polyfill'
-
-import React from 'react'
 import { createRenderer } from 'nucleate'
 
-import './css/main.scss'
+import './css/main.sass'
 
 const render = createRenderer()
 export default render
