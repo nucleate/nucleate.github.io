@@ -49,6 +49,6 @@ export default {
     new ExtractTextPlugin('[name].css')
   ],
   'markdown-it': {
-    preset: 'default'
+    preset: 'commonmark'
   }
 }
