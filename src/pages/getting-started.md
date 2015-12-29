@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-layout: Default
+layout: Topic
 ---
 
 Getting Started
