@@ -34,10 +34,13 @@ export default {
           'css-loader?sourceMap' +
           '!sass-loader?sourceMap&indentedSyntax=true'
         )
+      },
+      {
+        test: /\.(gif|jpg|jpeg|png|svg|eot|ttf|woff2?)/,
+        loader: 'file-loader'
       }
     ]
   },
-  devtool: undefined,
   plugins: [
     ...config.plugins,
     // Clear build folder for each build

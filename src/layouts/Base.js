@@ -19,6 +19,8 @@ class BaseLayout extends Component {
           <meta name='viewport' content='width=device-width' />
           <meta name='description' content='Nucleate' />
 
+          <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css' />
+          <link href='//fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css' />
           <link rel='stylesheet' href='/main.css' />
           <script async src='/bundle.js'></script>
         </head>
