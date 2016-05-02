@@ -13,10 +13,18 @@ export default function Sidebar() {
         </div>
 
         <nav className="sidebar-nav">
-          <Link className="sidebar-nav-item" activeClassName="active" to="/">Home</Link>
-          <Link className="sidebar-nav-item" activeClassName="active" to="/api">API</Link>
-          <Link className="sidebar-nav-item" activeClassName="active" to="/api">Comparison</Link>
-          <a className="sidebar-nav-item" href="https://github.com/nucleate/nucleate">GitHub</a>
+          <Link className="sidebar-nav-item" activeClassName="active" to="/">
+            Home
+          </Link>
+          <Link className="sidebar-nav-item" activeClassName="active" to="/api">
+            API
+          </Link>
+          <Link className="sidebar-nav-item" activeClassName="active" to="/comparison">
+            Comparison
+          </Link>
+          <a className="sidebar-nav-item" target="_blank" href="https://github.com/nucleate/nucleate">
+            GitHub
+          </a>
         </nav>
 
         <p>
