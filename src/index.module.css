@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+html, body {
+  height: 100%;
+}
+@media (min-width: 38em) {
+  html {
+    font-size: 1.25em;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 48em) {
+  body {
+    flex-direction: row;
+  }
+}
