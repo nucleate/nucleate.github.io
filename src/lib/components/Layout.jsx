@@ -2,33 +2,12 @@ import { Link } from 'nucleate';
 import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import { List } from 'material-ui/List';
 
+import DrawerLink from './DrawerLink';
 import logo from 'lib/img/nucleate-logo.svg';
-import styles from './Layout.module.css';
 
 const DRAWER_WIDTH = 256;
-
-function DrawerMenuItem(props) {
-  return (
-    <MenuItem
-      innerDivStyle={{ padding: 0 }}
-      type={null} // workaround for https://github.com/callemall/material-ui/issues/4008
-      {...props}
-    />
-  );
-}
-
-function DrawerLink({ external, ...props }) {
-  if (external) {
-    return <a className={styles.drawerLink} target="_blank" {...props} />;
-  }
-
-  return <Link className={styles.drawerLink} activeClassName="active" {...props} />;
-}
-DrawerLink.propTypes = {
-  external: PropTypes.bool,
-};
 
 class Layout extends Component {
 
@@ -56,13 +35,19 @@ class Layout extends Component {
     this.setState({ drawerDocked: mql.matches });
   }
 
+  handleDrawerClose() {
+    this.setState({ drawerOpen: false });
+  }
+
   render() {
     const { children } = this.props;
     const { drawerDocked, drawerOpen } = this.state;
     return (
-      <div className={styles.container}>
+      <div style={{ width: '100%' }}>
         <AppBar
-          onLeftIconButtonTouchTap={() => this.setState({ drawerOpen: !this.state.drawerOpen })}
+          onLeftIconButtonTouchTap={
+            () => this.setState({ drawerOpen: !this.state.drawerOpen })
+          }
           showMenuIconButton={!drawerDocked}
           style={{
             marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
@@ -70,6 +55,9 @@ class Layout extends Component {
         />
         <Drawer
           docked={drawerDocked}
+          onRequestChange={
+            open => this.setState({ drawerOpen: open })
+          }
           open={drawerDocked || drawerOpen}
           width={DRAWER_WIDTH}
         >
@@ -79,42 +67,62 @@ class Layout extends Component {
               padding: 0,
             }}
             title={
-              <Link className={styles.drawerLink} to="/">
-                <img className={styles.logo} alt="Nucleate Logo" src={logo} />
+              <Link
+                style={{
+                  // Inherit text color from AppBar theme
+                  color: 'inherit',
+                  display: 'flex',
+                  paddingLeft: '16px',
+                  paddingRight: '16px',
+                  textDecoration: 'none',
+                }}
+                to="/"
+              >
+                <img
+                  style={{
+                    height: '2rem',
+                    alignSelf: 'center',
+                  }}
+                  alt="Nucleate Logo"
+                  src={logo}
+                />
                 Nucleate
               </Link>
             }
           />
-
-          <DrawerMenuItem>
-            <DrawerLink to="/">
+          <List>
+            <DrawerLink
+              onlyActiveOnIndex
+              onTouchTap={() => this.handleDrawerClose()}
+              to="/"
+            >
               Home
             </DrawerLink>
-          </DrawerMenuItem>
-
-          <DrawerMenuItem>
-            <DrawerLink to="/api">
+            <DrawerLink
+              onTouchTap={() => this.handleDrawerClose()}
+              to="/api"
+            >
               API
             </DrawerLink>
-          </DrawerMenuItem>
-
-          <DrawerMenuItem>
-            <DrawerLink to="/comparison">
+            <DrawerLink
+              onTouchTap={() => this.handleDrawerClose()}
+              to="/comparison"
+            >
               Comparison
             </DrawerLink>
-          </DrawerMenuItem>
-
-          <DrawerMenuItem>
-            <DrawerLink external href="https://github.com/nucleate/nucleate">
-              GitHub
+            <DrawerLink
+              external
+              onTouchTap={() => this.handleDrawerClose()}
+              to="https://github.com/nucleate/nucleate"
+            >
+              Github
             </DrawerLink>
-          </DrawerMenuItem>
-
+          </List>
         </Drawer>
         <div
-          className={styles.content}
           style={{
             marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
+            padding: '2em',
           }}
         >
           {children}
