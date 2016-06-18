@@ -1,5 +1,6 @@
 import { Link } from 'nucleate';
 import React, { Component, PropTypes } from 'react';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { List } from 'material-ui/List';
@@ -40,7 +41,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, muiTheme } = this.props;
     const { drawerDocked, drawerOpen } = this.state;
     return (
       <div style={{ width: '100%' }}>
@@ -51,6 +52,7 @@ class Layout extends Component {
           showMenuIconButton={!drawerDocked}
           style={{
             marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
+            position: 'fixed',
           }}
         />
         <Drawer
@@ -122,6 +124,7 @@ class Layout extends Component {
         <div
           style={{
             marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
+            marginTop: muiTheme.appBar.height,
             padding: '2em',
           }}
         >
@@ -134,6 +137,7 @@ class Layout extends Component {
 
 Layout.propTypes = {
   children: PropTypes.node,
+  muiTheme: PropTypes.object.isRequired,
 };
 
-export default Layout;
+export default muiThemeable()(Layout);
