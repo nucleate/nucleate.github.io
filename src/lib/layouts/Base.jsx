@@ -5,14 +5,16 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import { List } from 'material-ui/List';
 
-import DrawerLink from './DrawerLink';
+import DrawerLink from 'lib/components/DrawerLink';
 import logo from 'lib/img/nucleate-logo.svg';
 
 const DRAWER_WIDTH = 256;
 
-class Layout extends Component {
+class BaseLayout extends Component {
 
   static defaultProps = {
+    appBarShadow: true,
+    contentPadding: '2em',
     drawerDockable: true,
   }
 
@@ -46,13 +48,18 @@ class Layout extends Component {
   }
 
   render() {
-    const { children, muiTheme } = this.props;
+    const { appBarShadow, children, muiTheme } = this.props;
     const { drawerDocked, drawerOpen } = this.state;
 
     const isDrawerDocked = this.props.drawerDockable && drawerDocked;
 
     return (
-      <div style={{ width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          flex: '1',
+        }}
+      >
         <AppBar
           onLeftIconButtonTouchTap={
             () => this.setState({ drawerOpen: !this.state.drawerOpen })
@@ -62,6 +69,7 @@ class Layout extends Component {
             marginLeft: isDrawerDocked ? DRAWER_WIDTH : 0,
             position: 'fixed',
           }}
+          zDepth={appBarShadow ? 1 : 0}
         />
         <Drawer
           docked={isDrawerDocked}
@@ -104,6 +112,12 @@ class Layout extends Component {
           <List>
             <DrawerLink
               onTouchTap={() => this.handleDrawerClose()}
+              to="/getting-started"
+            >
+              Getting Started
+            </DrawerLink>
+            <DrawerLink
+              onTouchTap={() => this.handleDrawerClose()}
               to="/api"
             >
               API
@@ -125,9 +139,10 @@ class Layout extends Component {
         </Drawer>
         <div
           style={{
+            display: 'flex',
+            flex: '1',
             marginLeft: isDrawerDocked ? DRAWER_WIDTH : 0,
             marginTop: muiTheme.appBar.height,
-            padding: '2em',
           }}
         >
           {children}
@@ -137,10 +152,11 @@ class Layout extends Component {
   }
 }
 
-Layout.propTypes = {
+BaseLayout.propTypes = {
+  appBarShadow: PropTypes.bool,
   children: PropTypes.node,
   drawerDockable: PropTypes.bool,
   muiTheme: PropTypes.object.isRequired,
 };
 
-export default muiThemeable()(Layout);
+export default muiThemeable()(BaseLayout);

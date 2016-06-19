@@ -1,7 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
-html, body {
-  min-height: 100%;
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  height: 100%;
 }
 @media (min-width: 38em) {
   html {
@@ -12,6 +16,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
 }
 @media (min-width: 48em) {
   body {
