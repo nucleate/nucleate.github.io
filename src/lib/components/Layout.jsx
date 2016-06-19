@@ -12,8 +12,12 @@ const DRAWER_WIDTH = 256;
 
 class Layout extends Component {
 
-  constructor(...args) {
-    super(...args);
+  static defaultProps = {
+    drawerDockable: true,
+  }
+
+  constructor(props, context) {
+    super(props, context);
     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
     this.state = {
       drawerDocked: false,
@@ -25,7 +29,8 @@ class Layout extends Component {
   componentDidMount() {
     const mql = window.matchMedia('(min-width: 38em)');
     mql.addListener(this.mediaQueryChanged);
-    this.setState({ drawerDocked: mql.matches, mql });
+    this.setState({ mql });
+    this.mediaQueryChanged(mql);
   }
 
   componentWillUnmount() {
@@ -43,24 +48,27 @@ class Layout extends Component {
   render() {
     const { children, muiTheme } = this.props;
     const { drawerDocked, drawerOpen } = this.state;
+
+    const isDrawerDocked = this.props.drawerDockable && drawerDocked;
+
     return (
       <div style={{ width: '100%' }}>
         <AppBar
           onLeftIconButtonTouchTap={
             () => this.setState({ drawerOpen: !this.state.drawerOpen })
           }
-          showMenuIconButton={!drawerDocked}
+          showMenuIconButton={!isDrawerDocked}
           style={{
-            marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
+            marginLeft: isDrawerDocked ? DRAWER_WIDTH : 0,
             position: 'fixed',
           }}
         />
         <Drawer
-          docked={drawerDocked}
+          docked={isDrawerDocked}
           onRequestChange={
             open => this.setState({ drawerOpen: open })
           }
-          open={drawerDocked || drawerOpen}
+          open={isDrawerDocked || drawerOpen}
           width={DRAWER_WIDTH}
         >
           <AppBar
@@ -70,6 +78,7 @@ class Layout extends Component {
             }}
             title={
               <Link
+                onTouchTap={() => this.handleDrawerClose()}
                 style={{
                   // Inherit text color from AppBar theme
                   color: 'inherit',
@@ -94,13 +103,6 @@ class Layout extends Component {
           />
           <List>
             <DrawerLink
-              onlyActiveOnIndex
-              onTouchTap={() => this.handleDrawerClose()}
-              to="/"
-            >
-              Home
-            </DrawerLink>
-            <DrawerLink
               onTouchTap={() => this.handleDrawerClose()}
               to="/api"
             >
@@ -123,7 +125,7 @@ class Layout extends Component {
         </Drawer>
         <div
           style={{
-            marginLeft: drawerDocked ? DRAWER_WIDTH : 0,
+            marginLeft: isDrawerDocked ? DRAWER_WIDTH : 0,
             marginTop: muiTheme.appBar.height,
             padding: '2em',
           }}
@@ -137,6 +139,7 @@ class Layout extends Component {
 
 Layout.propTypes = {
   children: PropTypes.node,
+  drawerDockable: PropTypes.bool,
   muiTheme: PropTypes.object.isRequired,
 };
 

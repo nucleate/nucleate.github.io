@@ -12,7 +12,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import Layout from 'lib/components/Layout';
 
 export const getIndexRoute = includeRoute(require('route!./pages/'));
@@ -40,7 +39,11 @@ const theme = getMuiTheme({
   userAgent: false,
 });
 
-function Index({ children }) {
+const last = arr => arr.slice(-1)[0];
+
+function Index({ children, routes }) {
+  const { layoutProps = {} } = last(routes).meta;
+
   return (
     <html>
       <head>
@@ -50,7 +53,9 @@ function Index({ children }) {
       </head>
       <body>
         <MuiThemeProvider muiTheme={theme}>
-          <Layout>{children}</Layout>
+          <Layout {...layoutProps}>
+            {children}
+          </Layout>
         </MuiThemeProvider>
       </body>
     </html>
@@ -59,6 +64,7 @@ function Index({ children }) {
 
 Index.propTypes = {
   children: PropTypes.node,
+  routes: PropTypes.array.isRequired,
 };
 
 export const component = Index;
