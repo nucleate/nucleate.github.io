@@ -23,7 +23,7 @@ Like [other static site generators](~/comparison), it makes creating static webs
 
 ## Get Started
 Clone this website to get started:
-```shell
+```bash
 git clone https://github.com/nucleate/nucleatejs.github.io.git
 npm install
 npm start

@@ -10,15 +10,16 @@ import {
   includeRoutes,
 } from 'nucleate';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Layout from 'lib/layouts/Base';
+import BaseLayout from 'lib/layouts/Base';
 
 export const getIndexRoute = includeRoute(require('route!./pages/'));
 export const getChildRoutes = includeRoutes(require.context('route!./pages/', false));
 
 import './index.module.css';
+
+injectTapEventPlugin();
 
 const theme = getMuiTheme({
   palette: {
@@ -43,7 +44,7 @@ const theme = getMuiTheme({
 const last = arr => arr.slice(-1)[0];
 
 function Index({ children, routes }) {
-  const { layoutProps = {} } = last(routes).meta;
+  const { layoutProps = {} } = last(routes).meta || {};
 
   return (
     <html>
@@ -54,9 +55,9 @@ function Index({ children, routes }) {
       </head>
       <body>
         <MuiThemeProvider muiTheme={theme}>
-          <Layout {...layoutProps}>
+          <BaseLayout {...layoutProps}>
             {children}
-          </Layout>
+          </BaseLayout>
         </MuiThemeProvider>
       </body>
     </html>

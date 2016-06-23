@@ -22,6 +22,7 @@ export const component = muiThemeable()(({ muiTheme }) => (
       flex: '1',
       flexDirection: 'column',
       justifyContent: 'center',
+      padding: '16px',
     }}
   >
     <img
@@ -42,8 +43,6 @@ export const component = muiThemeable()(({ muiTheme }) => (
     <p
       style={{
         color: muiTheme.palette.alternateTextColor,
-        marginLeft: '16px',
-        marginRight: '16px',
       }}
     >
       A static site generator powered by{' '}
@@ -64,24 +63,8 @@ export const component = muiThemeable()(({ muiTheme }) => (
         webpack
       </a>
     </p>
-    <RaisedButton
-      label={
-        <Link
-          style={{
-            color: muiTheme.palette.textColor,
-            paddingLeft: '16px',
-            paddingRight: '16px',
-            textDecoration: 'none',
-          }}
-          to="/getting-started"
-        >
-          Get Started
-        </Link>
-      }
-      labelStyle={{
-        display: 'block',
-        padding: 0,
-      }}
-    />
+    <Link to="/getting-started">
+      <RaisedButton label="Get Started" />
+    </Link>
   </div>
 ));
