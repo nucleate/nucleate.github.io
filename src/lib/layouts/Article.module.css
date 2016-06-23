@@ -1,0 +1,11 @@
+.article {
+  padding: 2em;
+
+  /* Workaround for http://stackoverflow.com/questions/35194121/flexbox-compatibility-with-horizontal-pre-code-scrolling */
+  max-width: calc(100vw - 2 * 2em);
+}
+
+.article pre {
+  background-color: #f7f7f7;
+  overflow: auto;
+}

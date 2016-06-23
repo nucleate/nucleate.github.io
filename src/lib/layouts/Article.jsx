@@ -1,10 +1,14 @@
+import muiThemeable from 'material-ui/styles/muiThemeable';
 import React, { PropTypes } from 'react';
 
-function ArticleLayout({ children }) {
+import styles from './Article.module.css';
+
+function ArticleLayout({ children, muiTheme }) {
   return (
     <div
+      className={styles.article}
       style={{
-        padding: '2em',
+        color: muiTheme.palette.textColor,
       }}
     >
       {children}
@@ -14,6 +18,7 @@ function ArticleLayout({ children }) {
 
 ArticleLayout.propTypes = {
   children: PropTypes.node,
+  muiTheme: PropTypes.object.isRequired,
 };
 
-export default ArticleLayout;
+export default muiThemeable()(ArticleLayout);
