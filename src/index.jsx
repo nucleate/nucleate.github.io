@@ -1,4 +1,5 @@
 import 'normalize.css/normalize.css';
+import 'highlight.js/styles/default.css';
 
 import * as colors from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator';
