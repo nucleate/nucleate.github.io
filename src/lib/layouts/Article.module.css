@@ -9,3 +9,7 @@
   background-color: #f7f7f7;
   overflow: auto;
 }
+
+.article pre * {
+  font-family: 'Roboto Mono', monospace;
+}
