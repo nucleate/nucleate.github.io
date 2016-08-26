@@ -118,6 +118,12 @@ class BaseLayout extends Component {
             </DrawerLink>
             <DrawerLink
               onTouchTap={() => this.handleDrawerClose()}
+              to="/usage"
+            >
+              Usage
+            </DrawerLink>
+            <DrawerLink
+              onTouchTap={() => this.handleDrawerClose()}
               to="/api"
             >
               API

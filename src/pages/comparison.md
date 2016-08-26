@@ -1,4 +1,5 @@
 ---
+layout: lib/layouts/Article
 title: Comparison
 ---
 
@@ -20,11 +21,11 @@ In addition, Gatsby also offers:
 
 * The `gatsby new` command to create a new site from a template
 
-However, Gatsby some drawbacks (in my opinion):
+However, Gatsby some drawbacks:
 * [Complex, opinionated configuration and folder structure](https://github.com/gatsbyjs/gatsby/blob/ab9736676b030b148032a4e6b66b377ee34ee094/README.md#structure-of-a-gatsby-site): `config.toml`, `html.js`, `/pages`, `_template.jsx`, etc.
-* No server rending during development: means poor [dev/prod parity](http://12factor.net/dev-prod-parity).
+* No server rending during development: this poor [dev/prod parity](http://12factor.net/dev-prod-parity) can lead to different behaviour between the development site and the generated static site.
 
-### [Statinamic](http://moox.io/statinamic/)
+### [Phenomic](https://phenomic.io/) (previously [Statinamic](http://moox.io/statinamic/))
 
 Coming soon.
 

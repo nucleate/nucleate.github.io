@@ -10,6 +10,6 @@
   overflow: auto;
 }
 
-.article pre * {
+.article code, .article code * {
   font-family: 'Roboto Mono', monospace;
 }

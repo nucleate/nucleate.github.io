@@ -10,9 +10,6 @@ function DrawerListItem(props) {
 
 function DrawerLink({ muiTheme, external, to, ...props }) {
   const styles = {
-    activeStyle: {
-      backgroundColor: fade(muiTheme.palette.textColor, 0.2),
-    },
     style: {
       color: 'inherit',
       display: 'flex',
@@ -23,7 +20,13 @@ function DrawerLink({ muiTheme, external, to, ...props }) {
 
   const link = external
     ? <a {...styles} href={to} target="_blank" {...props} />
-    : <Link {...styles} className={styles.drawerLink} to={to} {...props} />;
+    : (
+        <Link {...styles} 
+          activeStyle={{ backgroundColor: fade(muiTheme.palette.textColor, 0.2) }} 
+          to={to} 
+          {...props} 
+        />
+      );
 
   return <DrawerListItem value={to}>{link}</DrawerListItem>;
 }
