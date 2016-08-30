@@ -19,14 +19,15 @@ function DrawerLink({ muiTheme, external, to, ...props }) {
   };
 
   const link = external
-    ? <a {...styles} href={to} target="_blank" {...props} />
+    ? <a {...styles} href={to} target="_blank" rel="noopener noreferrer" {...props} />
     : (
-        <Link {...styles} 
-          activeStyle={{ backgroundColor: fade(muiTheme.palette.textColor, 0.2) }} 
-          to={to} 
-          {...props} 
-        />
-      );
+    <Link
+      {...styles}
+      activeStyle={{ backgroundColor: fade(muiTheme.palette.textColor, 0.2) }}
+      to={to}
+      {...props}
+    />
+  );
 
   return <DrawerListItem value={to}>{link}</DrawerListItem>;
 }

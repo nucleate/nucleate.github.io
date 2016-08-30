@@ -1,8 +1,12 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
   "rules": {
     "global-require": 0,
+    "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "react/no-did-mount-set-state": 0
   }

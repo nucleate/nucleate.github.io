@@ -50,6 +50,7 @@ export const component = muiThemeable()(({ muiTheme }) => (
         href="https://facebook.github.io/react/"
         style={{ color: muiTheme.palette.alternateTextColor }}
         target="_blank"
+        rel="noopener noreferrer"
       >
         React
       </a>
@@ -59,6 +60,7 @@ export const component = muiThemeable()(({ muiTheme }) => (
         href="http://webpack.github.io/"
         style={{ color: muiTheme.palette.alternateTextColor }}
         target="_blank"
+        rel="noopener noreferrer"
       >
         webpack
       </a>

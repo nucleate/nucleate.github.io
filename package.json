@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "nucleate build src",
-    "lint": "eslint --ext .js,.jsx .",
+    "lint": "eslint --ext .js,.jsx src",
     "publish": "npm run build && gh-pages --dist build --branch master",
     "start": "nucleate serve src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "highlight.js": "^9.6.0",
     "material-ui": "^0.15.4",
     "normalize.css": "^4.2.0",
-    "nucleate": "file:../nucleate",
+    "nucleate": "0.1.0-alpha.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-tap-event-plugin": "^1.0.0"

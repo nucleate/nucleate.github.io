@@ -14,12 +14,13 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import BaseLayout from 'lib/layouts/Base';
 
+import './index.module.css';
+
 const favicons = require.context('!!file?name=[name].[ext]!lib/favicons');
 
 export const getIndexRoute = includeRoute(require('route!./pages/'));
-export const getChildRoutes = includeRoutes(require.context('route!./pages/', false));
 
-import './index.module.css';
+export const getChildRoutes = includeRoutes(require.context('route!./pages/', false));
 
 injectTapEventPlugin();
 
@@ -50,7 +51,7 @@ function Index({ children, routes }) {
 
   /* eslint-disable max-len */
   return (
-    <html>
+    <html lang="en">
       <head>
         <title>Nucleate</title>
         <link rel="apple-touch-icon" sizes="57x57" href={favicons('./apple-touch-icon-57x57.png')} />
