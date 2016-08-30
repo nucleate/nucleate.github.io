@@ -1,0 +1,15 @@
+# Use Trusty beta environment: https://docs.travis-ci.com/user/trusty-ci-environment/
+sudo: required
+dist: trusty
+
+language: node_js
+node_js:
+  - 'stable'
+cache:
+  directories:
+  - node_modules
+install:
+  - npm prune && npm install
+after_success:
+  # Deploy to GitHub Pages
+  - npm run publish
