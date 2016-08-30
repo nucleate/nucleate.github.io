@@ -10,6 +10,10 @@ cache:
   - node_modules
 install:
   - npm prune && npm install
-after_success:
-  # Deploy to GitHub Pages
-  - npm run publish
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run publish
+  on:
+    branch: source
