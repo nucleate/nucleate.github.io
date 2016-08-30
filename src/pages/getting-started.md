@@ -22,7 +22,7 @@ Nucleate aims to
 ## Get Started
 Clone this website to get started:
 ```shell
-git clone https://github.com/nucleate/nucleatejs.github.io.git
+git clone https://github.com/nucleate/nucleate.github.io.git
 npm install
 npm start
 ```
